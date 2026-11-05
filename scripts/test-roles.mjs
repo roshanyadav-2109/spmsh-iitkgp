@@ -36,11 +36,28 @@ const URL_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const SECRET = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
+// Test account passwords come from the environment, never from this file:
+// TEST_RECEPTION_PASSWORD, TEST_DOCTOR1_PASSWORD, TEST_DOCTOR2_PASSWORD.
 const ACCOUNTS = {
-  reception: { email: "reception1@spmhospital.local", password: "TestRecep!2026#spm" },
-  doctorOne: { email: "doctor1@spmhospital.local", password: "TestDoc1!2026#spm" },
-  doctorTwo: { email: "doctor2@spmhospital.local", password: "TestDoc2!2026#spm" },
+  reception: {
+    email: "reception1@spmhospital.local",
+    password: process.env.TEST_RECEPTION_PASSWORD ?? "",
+  },
+  doctorOne: {
+    email: "doctor1@spmhospital.local",
+    password: process.env.TEST_DOCTOR1_PASSWORD ?? "",
+  },
+  doctorTwo: {
+    email: "doctor2@spmhospital.local",
+    password: process.env.TEST_DOCTOR2_PASSWORD ?? "",
+  },
 };
+for (const [role, account] of Object.entries(ACCOUNTS)) {
+  if (!account.password) {
+    console.error(`Set the password for the ${role} test account in the environment.`);
+    process.exit(1);
+  }
+}
 
 /**
  * Doctor scoping can only be tested against the doctor records the two test
