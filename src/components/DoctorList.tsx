@@ -21,7 +21,7 @@ export function DoctorList({
   }
 
   return (
-    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {doctors.map((doctor) => (
         <li key={doctor.id}>
           <DoctorCard

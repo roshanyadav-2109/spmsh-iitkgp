@@ -465,7 +465,7 @@ export default async function DepartmentPage({ params }: Props) {
             className={
               shownDoctors.length < 3
                 ? "mt-10 flex flex-wrap justify-center gap-5 [&>li]:w-full sm:[&>li]:w-[24rem]"
-                : "mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+                : "mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3"
             }
           >
             {shownDoctors.map((doctor) => (
@@ -880,13 +880,13 @@ function DoctorTile({
     <article className="flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white">
       {/* Only a real photograph gets the portrait area; without one the card starts at the name. */}
       {doctor.photo_path ? (
-        <div className="relative h-56 bg-tint-neutral">
+        <div className="relative aspect-[4/3] bg-tint-neutral">
           <Image
             src={doctor.photo_path}
             alt=""
             fill
             sizes="(max-width: 640px) 100vw, 33vw"
-            className="object-cover object-top"
+            className="object-cover object-center"
           />
         </div>
       ) : null}

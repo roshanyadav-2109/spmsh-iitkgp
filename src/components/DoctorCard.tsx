@@ -56,13 +56,13 @@ export function DoctorCard({
     <article className="flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white">
       {/* Only a real photograph gets a portrait area. */}
       {doctor.photo_path ? (
-        <div className="relative h-56 bg-tint-neutral">
+        <div className="relative aspect-[4/3] bg-tint-neutral">
           <Image
             src={doctor.photo_path}
             alt=""
             fill
             sizes="(max-width: 640px) 100vw, 33vw"
-            className="object-cover object-top"
+            className="object-cover object-center"
           />
         </div>
       ) : null}
