@@ -12,7 +12,7 @@ const DEMO_ACCOUNTS = [
   { label: "Doctor", email: "doctor@demo.local" },
   { label: "Admin", email: "admin@demo.local" },
 ];
-const DEMO_PASSWORD = "demo1234";
+const DEMO_PASSWORD = "DemoLogin2026";
 
 export function LoginForm({
   nextPath,

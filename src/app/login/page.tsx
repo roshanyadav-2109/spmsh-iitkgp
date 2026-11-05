@@ -15,9 +15,10 @@ const REASONS: Record<string, string> = {
 };
 
 /**
- * Demo sign-in buttons show only when NEXT_PUBLIC_DEMO_LOGIN=1, which is set
- * for the local preview and never in production. The accounts themselves
- * exist only in the local sample-data server.
+ * Demo sign-in buttons show only when NEXT_PUBLIC_DEMO_LOGIN=1. The owner
+ * chose to turn this on for the live site too, knowing it gives anyone staff
+ * access; the demo accounts are reception@, doctor@ and admin@demo.local.
+ * Build without the flag to remove the buttons.
  */
 const DEMO_ENABLED = process.env.NEXT_PUBLIC_DEMO_LOGIN === "1";
 
