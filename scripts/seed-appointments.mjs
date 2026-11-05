@@ -58,6 +58,12 @@ loadEnv(".env.local");
 const BASE = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SECRET = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const REPLACE = process.argv.includes("--replace");
+/* --append keeps what is there and adds to it; --past-only stops at today and
+   writes no future clinic changes or holidays, so a live site's booking
+   calendar is untouched; --seed=N gives a different set of sample people. */
+const APPEND = process.argv.includes("--append");
+const PAST_ONLY = process.argv.includes("--past-only");
+const SEED_ARG = process.argv.find((arg) => arg.startsWith("--seed="));
 
 const say = (line) => process.stdout.write(line + "\n");
 
@@ -90,7 +96,7 @@ async function rest(path, init = {}) {
    generator would mean a fresh set of names and numbers on every rebuild,
    which makes a screenshot from yesterday impossible to compare with one
    taken today. */
-let seed = 20260906;
+let seed = SEED_ARG ? Number(SEED_ARG.slice(7)) | 0 : 20260906;
 function random() {
   seed |= 0;
   seed = (seed + 0x6d2b79f5) | 0;
@@ -206,12 +212,24 @@ function clockAt(startTime, slotMinutes, index) {
 
 const run = async () => {
   const existing = await rest("appointments?select=id&limit=1");
-  if (existing.length > 0 && !REPLACE) {
+  if (APPEND) {
+    // PostgREST returns at most 1000 rows per request, so read in pages.
+    let total = 0;
+    for (let from = 0; ; from += 1000) {
+      const page = await rest("appointments?select=booking_ref&order=booking_ref", {
+        headers: { Range: from + "-" + (from + 999) },
+      });
+      for (const row of page) usedRefs.add(row.booking_ref);
+      total += page.length;
+      if (page.length < 1000) break;
+    }
+    say("Appending; " + total + " existing references kept clear.");
+  } else if (existing.length > 0 && !REPLACE) {
     say("There are already appointments in this project.");
     say("Pass --replace to clear them and rebuild.");
     process.exit(1);
   }
-  if (existing.length > 0) {
+  if (existing.length > 0 && REPLACE && !APPEND) {
     say("Clearing existing appointments and schedule changes.");
     await rest("appointments?id=not.is.null", { method: "DELETE" });
     await rest("schedule_exceptions?id=not.is.null", { method: "DELETE" });
@@ -232,7 +250,7 @@ const run = async () => {
   const today = istToday();
   const rows = [];
 
-  for (let offset = -30; offset <= 3; offset += 1) {
+  for (let offset = -30; offset <= (PAST_ONLY ? 0 : 3); offset += 1) {
     const date = shift(today, offset);
     const weekday = date.getUTCDay();
 
@@ -317,6 +335,11 @@ const run = async () => {
 
   /* All four kinds of change, on doctors who actually hold clinics, plus one
      left unapproved so the reception approval queue is not empty. */
+  if (PAST_ONLY) {
+    say("Past only: no clinic changes or holidays written.");
+    say("Done. " + rows.length + " appointments from " + iso(shift(today, -30)) + " to " + iso(today) + ".");
+    return;
+  }
   const withSessions = active.filter((doctor) =>
     live.some((item) => item.doctor_id === doctor.id),
   );
