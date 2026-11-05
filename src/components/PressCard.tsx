@@ -52,7 +52,7 @@ export async function PressCard({
                 ? "(max-width: 768px) 100vw, 50vw"
                 : "(max-width: 768px) 100vw, 33vw"
             }
-            className="object-cover"
+            className="object-contain"
           />
         </span>
       ) : (

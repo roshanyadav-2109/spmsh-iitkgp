@@ -413,7 +413,7 @@ export default async function DepartmentPage({ params }: Props) {
                 </a>
               </p>
             </blockquote>
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-lg lg:col-span-4">
+            <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-lg lg:col-span-4">
               <Image
                 src="/images/director.jpg"
                 alt="Prof. Suman Chakraborty, Director, IIT Kharagpur"

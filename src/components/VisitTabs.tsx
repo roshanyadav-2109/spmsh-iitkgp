@@ -54,7 +54,7 @@ export function VisitTabs({ steps, shots }: { steps: string[]; shots: Shot[] }) 
       </ol>
 
       {shot ? (
-        <div className="photo-tile relative aspect-[4/3] lg:col-span-4 lg:aspect-auto lg:min-h-80">
+        <div className="photo-tile relative aspect-[3/2] lg:col-span-4 lg:self-start">
           <Image
             src={shot.src}
             alt={shot.alt}

@@ -85,7 +85,7 @@ export default function AboutPage() {
               health-scheme rates.
             </p>
           </div>
-          <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[28rem]">
+          <div className="relative aspect-[16/9] lg:mr-10 lg:self-center lg:overflow-hidden lg:rounded-lg">
             <Image
               src="/images/hospital-building.jpg"
               alt="The hospital building at Balarampur on the IIT Kharagpur campus"

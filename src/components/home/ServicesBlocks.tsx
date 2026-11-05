@@ -55,7 +55,7 @@ export async function ServicesBlocks({
                   )}
                 >
                   {photo ? (
-                    <span className="relative block aspect-[4/3] md:aspect-auto md:min-h-64">
+                    <span className="relative block aspect-[3/2] md:self-center">
                       <Image
                         src={photo.image}
                         alt={photo.alt}

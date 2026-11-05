@@ -38,13 +38,13 @@ export async function DoctorsBand({ doctors }: { doctors: BandDoctor[] }) {
                 className="group ui-transition flex h-full items-center gap-4 rounded-lg border-2 border-tint bg-tint p-4 no-underline hover:border-ink hover:bg-white lg:flex-col lg:items-start lg:p-5"
               >
                 {doctor.photoPath ? (
-                  <span className="relative block h-14 w-14 shrink-0 overflow-hidden rounded-full lg:aspect-[4/3] lg:h-auto lg:w-full lg:rounded-md">
+                  <span className="relative block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white lg:aspect-square lg:h-auto lg:w-full lg:rounded-md">
                     <Image
                       src={doctor.photoPath}
                       alt=""
                       fill
                       sizes="(max-width: 1024px) 56px, 260px"
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </span>
                 ) : (

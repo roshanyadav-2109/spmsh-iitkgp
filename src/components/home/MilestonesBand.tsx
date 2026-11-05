@@ -34,7 +34,7 @@ export async function MilestonesBand() {
         <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10">
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {lead ? (
-              <div className="relative col-span-2 aspect-[16/9] overflow-hidden rounded-lg bg-tint">
+              <div className="relative col-span-2 aspect-[3/2] overflow-hidden rounded-lg bg-tint">
                 <Image
                   src={lead.src}
                   alt={lead.alt}
@@ -47,7 +47,7 @@ export async function MilestonesBand() {
             {rest.map((photo) => (
               <div
                 key={photo.src}
-                className="relative aspect-[4/3] overflow-hidden rounded-lg bg-tint"
+                className="relative aspect-[16/9] overflow-hidden rounded-lg bg-tint"
               >
                 <Image
                   src={photo.src}
