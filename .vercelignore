@@ -1,0 +1,10 @@
+# Never upload secrets or local build output.
+.env*
+!.env.example
+node_modules
+.next
+.vercel
+
+# Local screenshots and browser-tool logs from design checks.
+/*.png
+.playwright-mcp

@@ -1,26 +1,1091 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------
+   Montserrat, self-hosted: one variable file each for latin and latin-ext
+   in /public/fonts under the SIL OFL, declared at 400, 500, 600 and 700. One family
+   for everything. Hierarchy comes from size and from 500 against 400,
+   not from bold.
+   ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
 }
 
-@media (prefers-color-scheme: dark) {
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/montserrat-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Indian scripts for the language switch. Each family only downloads when
+   a page uses its script. 700 reuses the 600 file. */
+@font-face {
+  font-family: "Noto Sans Bengali";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/noto-sans-bengali-400.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1,
+    U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "Noto Sans Bengali";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/noto-sans-bengali-500.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1,
+    U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "Noto Sans Bengali";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/noto-sans-bengali-600.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1,
+    U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "Noto Sans Bengali";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/noto-sans-bengali-600.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1,
+    U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "Noto Sans Devanagari";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/noto-sans-devanagari-400.woff2") format("woff2");
+  unicode-range:
+    U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839,
+    U+A8E0-A8FF;
+}
+@font-face {
+  font-family: "Noto Sans Devanagari";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/noto-sans-devanagari-500.woff2") format("woff2");
+  unicode-range:
+    U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839,
+    U+A8E0-A8FF;
+}
+@font-face {
+  font-family: "Noto Sans Devanagari";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/noto-sans-devanagari-600.woff2") format("woff2");
+  unicode-range:
+    U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839,
+    U+A8E0-A8FF;
+}
+@font-face {
+  font-family: "Noto Sans Devanagari";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/noto-sans-devanagari-600.woff2") format("woff2");
+  unicode-range:
+    U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839,
+    U+A8E0-A8FF;
+}
+@font-face {
+  font-family: "Noto Sans Telugu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/noto-sans-telugu-400.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+1CF2, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "Noto Sans Telugu";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/noto-sans-telugu-500.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+1CF2, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "Noto Sans Telugu";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/noto-sans-telugu-600.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+1CF2, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "Noto Sans Telugu";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/noto-sans-telugu-600.woff2") format("woff2");
+  unicode-range:
+    U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+1CF2, U+200C-200D, U+25CC;
+}
+
+/* ------------------------------------------------------------------
+   Theme. Every default Tailwind namespace that could admit an
+   off-palette colour, an elevation, a pill radius or a stray font
+   weight is reset to `initial` first, then repopulated with the
+   locked token set. After this, the default palette utilities do not
+   exist — they generate nothing — and `npm run check:design` fails
+   the build if one is written anyway.
+   ------------------------------------------------------------------ */
+
+@theme {
+  /* --- colour: three families, nothing else --- */
+  --color-*: initial;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ------------------------------------------------------------------
+     Navy is the institution: utility line, hero, footer, the emblem
+     ground. White on it is 14.0:1. The bright blue is the accent on
+     dark grounds only (4.6:1 on navy, 3.0:1 on white — never small text
+     on white). #0f5bd6 is the accent on every light ground (6.0:1 on
+     white), and is also a legal solid button fill under white text.
+     ------------------------------------------------------------------ */
+  --color-brand: #1e9ce5; /* accent on dark grounds */
+  --color-brand-deep: #0a2a5c; /* navy: chrome, hero, footer */
+  --color-brand-darker: #061b3d; /* hover on the navy */
+  /* The one accent on light grounds: buttons, arrow discs, figures, the
+     filled part of each line icon. White on it is 6.1:1. */
+  --color-accent: #0b7a55; /* hospital green, from the illustrations; white 5.3:1, 4.8:1 on tint */
+  --color-accent-deep: #075c40; /* hover on the accent */
+  --color-accent-soft: #d3eee2; /* hover fill on a tinted card */
+  /* The second colour: icon fills, arrow discs, the emphasis in the hero
+     quote. Never small text: healing green, 3.2:1 under white, which is
+     enough for a graphic or large type and not for body copy. */
+  --color-highlight: #1f63c6; /* the illustrations' blue; white 5.8:1 */
+  --color-royal: #0a2a5c; /* the emblem ground; same value as the navy */
+
+  --color-ink: #111111; /* headings, titles and links: black, 18.9:1 on white */
+  --color-body: #3d3d3d; /* running copy, neutral, 10.9:1 on white */
+  --color-muted: #4d4d4d;
+  --color-faint: #616161; /* dates and captions, 6.2:1 on white */
+
+  /* The one red, for the emergency number and nothing else. 5.7:1 on
+     white. On the navy the number stays white. */
+  --color-emergency: #c81e1e;
+
+  --color-band-light: #123a75;
+  --color-band-deep: #061b3d;
+
+  --color-line: #e3e5e8; /* dividers and card borders, neutral */
+  --color-line-strong: #c9cdd2; /* control borders, hover */
+  --color-bar: #22262b; /* section menu band, charcoal; white is 15.4:1 */
+  --color-bar-deep: #131518; /* top strip, near-black */
+  --color-bar-line: #3a3f46; /* hover fill on the bars */
+  --color-tint: #f2f3f5; /* card fill on a white band, neutral: no green blocks */
+  --color-panel: #eceef1; /* the alternate band, neutral */
+  --color-rule: #6b7280; /* structural rule, 4.8:1 on white; never text */
+  --color-tint-warm: #f7dcdc; /* retired */
+  --color-tint-neutral: #f2f3f5;
+
+  /* One colour per department, for the marks only. Each is 5:1+ on white. */
+  --color-dept-medicine: #0369a1;
+  --color-dept-paediatrics: #c2410c;
+  --color-dept-ophthalmology: #0e7490;
+  --color-dept-obstetrics: #be185d;
+  --color-dept-psychiatry: #4338ca;
+  --color-dept-dental: #0f766e;
+  --color-dept-surgery: #6d28d9;
+  --color-dept-biochemistry: #15803d;
+  --color-dept-pathology: #1d4ed8;
+
+  --color-placeholder: #6b7280; /* 4.8:1 on white */
+  --color-disabled: #a3a3a3;
+  --color-scrim: rgba(10, 42, 92, 0.65); /* modal backdrop */
+
+  /* Aliases kept for the staff portal and the UI primitives. */
+  --color-navy: #0a2a5c;
+  --color-navy-deep: #061b3d;
+  --color-navy-hover: #1e9ce5;
+
+  /* --- type --- */
+  --font-*: initial;
+  --font-sans:
+    "Montserrat", "Noto Sans Bengali", "Noto Sans Devanagari", "Noto Sans Telugu",
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display:
+    "Montserrat", "Noto Sans Bengali", "Noto Sans Devanagari", "Noto Sans Telugu",
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, monospace;
+
+  /* Weights: 400 for copy, 500 for titles and labels, 600 for small
+     emphasis, 700 for the large figures. All four ship as real files. */
+  --font-weight-*: initial;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Size scale, named by px so an off-scale size cannot be written. */
+  --text-*: initial;
+  --text-12: 12px;
+  --text-12--line-height: 1.4;
+  --text-13: 13px;
+  --text-13--line-height: 1.45;
+  --text-14: 14px;
+  --text-14--line-height: 1.45;
+  --text-15: 15px;
+  --text-15--line-height: 1.6;
+  --text-16: 16px;
+  --text-16--line-height: 1.6;
+  --text-18: 18px;
+  --text-18--line-height: 1.5;
+  --text-21: 21px;
+  --text-21--line-height: 1.35;
+  --text-26: 26px;
+  --text-26--line-height: 1.25;
+  --text-32: 32px;
+  --text-32--line-height: 1.15;
+  /* Display sizes. The brief's scale stopped at 32px, which left every page
+     reading like an unstyled document. These two steps exist for the hero,
+     for page-level h1 from 640px up, and for the figures in the fact rail
+     and statistics band, and nowhere else. */
+  --text-42: 42px;
+  --text-42--line-height: 1.1;
+  --text-40: 40px;
+  --text-40--line-height: 1.12;
+  --text-52: 52px;
+  --text-52--line-height: 1.04;
+
+  --tracking-*: initial;
+  --tracking-normal: 0;
+  --tracking-wide-small: 0.005em; /* 13px labels */
+  --tracking-tight: -0.01em; /* 21px */
+  --tracking-tighter: -0.015em; /* 26px */
+  --tracking-tightest: -0.02em; /* 32px */
+  --tracking-display: -0.025em; /* 40px and 52px */
+  --tracking-eyebrow: 0.1em; /* 12px all-caps eyebrow only */
+  /* The eyebrow style is drawn as a single rule-length line. The letterhead
+     datum wraps to three lines of it on a 390px phone, and 0.1em over three
+     lines of 12px all-caps is close to unreadable. Below 640px the datum is
+     shortened AND opened only this far. Nothing else uses it. */
+  --tracking-datum: 0.04em;
+
+  --leading-*: initial;
+  --leading-none: 1;
+  --leading-dense: 1.45;
+  --leading-body: 1.6;
+
+  /* --- shape --- */
+  --radius-*: initial;
+  --radius-sm: 6px; /* controls */
+  --radius-md: 10px; /* small cards */
+  --radius-lg: 18px; /* blocks, panels and photographs */
+  --radius-full: 9999px; /* arrow discs, letter cells and header pills */
+
+  /* --- elevation: there is none --- */
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+  --blur-*: initial;
+
+  /* --- motion --- */
+  --ease-*: initial;
+  --ease-standard: ease;
+  --animate-*: initial;
+}
+
+@layer base {
+  /* ------------------------------------------------------------------
+     Colour options kept for comparison. Hospital green with the
+     illustrations' blue (G) is the chosen palette and lives in @theme above. The palette picker sets
+     data-palette on <html>; each option redefines only the colour tokens, so
+     every utility follows. Red stays the emergency colour in all of them.
+       blue  the earlier all-blue palette
+       a     navy and medical teal
+       c     teal
+       d     navy and coral
+     ------------------------------------------------------------------ */
+  :root[data-palette="b"] {
+    --color-accent: #1a4fa3;
+    --color-accent-deep: #133c7d;
+    --color-accent-soft: #cfe9dc;
+    --color-highlight: #12a37f;
+  }
+  :root[data-palette="a"] {
+    --color-accent: #0b2d5b;
+    --color-accent-deep: #061b3d;
+    --color-accent-soft: #dcefee;
+    --color-highlight: #0e8c8c;
+    --color-ink: #0b1f3a;
+    --color-tint: #f2f8f8;
+    --color-panel: #e6f2f2;
+    --color-line: #d5e6e6;
+    --color-line-strong: #b4cfd0;
+  }
+  :root[data-palette="blue"] {
+    --color-accent: #1f5fbf;
+    --color-accent-deep: #174a96;
+    --color-accent-soft: #e2ecfb;
+    --color-highlight: #1f5fbf;
+    --color-ink: #0f1e36;
+    --color-tint: #f3f7fd;
+    --color-panel: #e9f1fc;
+    --color-line: #dfe7f2;
+    --color-line-strong: #c3d0e2;
+  }
+  :root[data-palette="c"] {
+    --color-accent: #07666f;
+    --color-accent-deep: #054d54;
+    --color-accent-soft: #d6eef0;
+    --color-highlight: #0a7c86;
+    --color-ink: #0b2a35;
+    --color-tint: #f1f8f8;
+    --color-panel: #e3f1f2;
+    --color-line: #d0e5e7;
+    --color-line-strong: #afcdd0;
+  }
+  :root[data-palette="d"] {
+    --color-accent: #0f2a4a;
+    --color-accent-deep: #0a1426;
+    --color-accent-soft: #fbe4de;
+    --color-highlight: #e2553b;
+    --color-ink: #0f1e36;
+    --color-tint: #f8f7f6;
+    --color-panel: #f1eeec;
+    --color-line: #e6e1de;
+    --color-line-strong: #cfc7c2;
+  }
+
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: light;
+    --page-max: 1240px;
+    --gutter: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --gutter: 32px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --gutter: 16px;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* The main navigation is `sticky top-0` and 56px tall, so anything the
+       page scrolls to — a focused step heading in the booking flow, an
+       in-page anchor — would otherwise land underneath it. 4rem clears the
+       bar with 8px to spare. */
+    scroll-padding-top: 4rem;
+    /* The page body never scrolls sideways. Wide content scrolls inside its
+       own container instead. */
+    overflow-x: hidden;
+  }
+
+  /* Long unbroken strings -- a reference, a URL, a PROVIDE token -- wrap
+     rather than pushing the layout wider than the screen. */
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  li,
+  dd,
+  dt,
+  td,
+  th,
+  address,
+  figcaption {
+    overflow-wrap: break-word;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* h1–h3 are the display voice, Plus Jakarta Sans. h4–h6 drop back to
+     Inter — a 16px card title is text, not display. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.25;
+    text-wrap: balance;
+    color: inherit;
+  }
+
+  /* Headings are black, the same ink as the body copy. They carried the
+     institutional blue until the whole site read as two colours of text with
+     no rule about which was which. #1b2433 on white is 13.9:1.
+
+     The royal is not gone: it still carries the nav, the bands, the footer
+     and the masthead lockup, which is where an institutional colour belongs.
+     A heading on a dark band still sets its own white explicitly. */
+  h1,
+  h2,
+  h3 {
+    color: var(--color-ink);
+  }
+
+  /* Hierarchy is size, letter-spacing and space. Never weight or colour.
+     Headings step down one place on the scale below 640px: "Superspeciality"
+     is a long word, and 40px overflows a 360px viewport. */
+  h1 {
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  h3 {
+    font-size: 18px;
+    letter-spacing: -0.006em;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 40px;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+    }
+    h2 {
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.012em;
+      line-height: 1.3;
+    }
+  }
+
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: -0.006em;
+    line-height: 1.4;
+  }
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Preflight sets `bolder` here. With only 400, 600 and 700 in the family
+     that would ask the browser to synthesise a weight, so it is pinned. */
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  ::placeholder {
+    color: var(--color-placeholder);
+    opacity: 1;
+  }
+
+  /* Never removed, never restyled away. */
+  :focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 2px;
+  }
+
+  /* On the deep-navy surfaces a navy ring measures 1.14:1 against navy-deep
+     and 1.00:1 against navy, which is not a focus ring at all. White is in
+     the palette, so the ring flips to white there. Marked with a data
+     attribute rather than a utility-class selector, because utility strings
+     are generated output and must not be depended on as selectors.
+     Not `currentColor`: the white-on-navy button variant would then draw a
+     navy ring in the offset gap, which is invisible again. */
+  [data-surface="dark"] :focus-visible,
+  [data-surface="dark"]:focus-visible {
+    outline-color: var(--color-white);
+  }
+
+  /* A white card sitting inside a dark band is a light island: the ring has
+     to flip back. Same specificity as the rule above, declared after it, so
+     the nearer surface wins. */
+  [data-surface="light"] :focus-visible,
+  [data-surface="light"]:focus-visible {
+    outline-color: var(--color-navy);
+  }
+
+  /* Programmatic focus targets.
+     ---------------------------
+     The booking flow, the login form and the booking lookup all move focus to
+     a heading or a summary when the step changes or an error appears, so that
+     a screen reader and the keyboard land on the new content instead of at
+     the top of the document. Those elements carry tabindex="-1" and are not
+     interactive.
+
+     Chrome will match :focus-visible on such an element even when the move
+     was triggered by a mouse click, which drew a 2px ring around a heading
+     the reader had just clicked a button next to — a rectangle appearing
+     around a block of text, with nothing focusable inside it.
+
+     The ring is suppressed on these and ONLY on these. It is not a WCAG 2.4.7
+     regression: the requirement is about interactive controls, and every
+     button, link and field on the page keeps its ring. scroll-mt on each of
+     them still puts the heading where it belongs. */
+  [data-focus-target]:focus,
+  [data-focus-target]:focus-visible {
+    outline: none;
+  }
+
+  [disabled],
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  /* Native controls follow the palette rather than the OS accent. */
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    accent-color: var(--color-navy);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* 1200px content column with the standard gutters. */
+  .page-width {
+    width: 100%;
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* Inside the staff portal the content starts beside the sidebar and uses
+     the width of the screen, instead of a centred column. */
+  .portal-content .page-width {
+    max-width: 1320px;
+    margin-inline: 0;
+    padding-inline: 20px;
+  }
+  @media (min-width: 1024px) {
+    .portal-content .page-width {
+      padding-inline: 40px;
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     The emergency number.
+
+     It is held at a flat #c81e1e, which is 5.74:1 on white and passes AA
+     at any size. It used to pulse between opacity 1 and 0.58; at 0.58 the
+     red composites over white to a washed pink measuring 2.86:1 — below
+     the 3:1 large-text floor and far below the 4.5:1 the 18px setting in
+     the fact rail needs. So the single most safety-critical string on
+     the site spent half of every cycle failing WCAG 1.4.3, and
+     the motion had no pause control, which failed 2.2.2 as well. The
+     number now gets its presence from size and from the rule beside it
+     in the letterhead, which cost nothing and read better anyway.
+     ------------------------------------------------------------------ */
+  .emergency-number {
+    color: var(--color-emergency);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  /* ------------------------------------------------------------------
+     The hero panel's left edge.
+
+     The panel is full-bleed, so a flat `lg:px-10` started its headline at
+     x=40 while the nav items, the letterhead lockup, every h2, the numbered
+     spine and the folio all start at x=132 on a 1440 screen. The hero was
+     hanging 92px outside the page's own measure, and it is the first thing
+     anybody sees. This resolves the inline-start padding to that same datum:
+     half the leftover viewport, plus the gutter. Below the 1240px maximum
+     the two numbers are identical, so nothing moves on a laptop or a phone;
+     it only bites on the wide screens where the hero was adrift. The
+     photograph beside it still bleeds to the right edge.
+     ------------------------------------------------------------------ */
+  /* The inline padding lives here rather than as `px-6` on the element:
+     Tailwind emits utilities after this layer, so a px-6 in the class
+     attribute silently won and the panel kept its old 24px edge. */
+  .hero-panel {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-panel {
+      padding-inline-start: max(
+        var(--gutter),
+        calc((100vw - var(--page-max)) / 2 + var(--gutter))
+      );
+      padding-inline-end: var(--gutter);
+    }
+  }
+
+  /* The scrim over the home hero photograph: dense navy behind the
+     headline, clearing towards the right so the building still reads.
+     White on the densest stop is 13:1; on phones the whole photo is
+     covered evenly, because the text spans the full width there. */
+  .hero-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(6, 27, 61, 0.82) 0%,
+      rgba(6, 27, 61, 0.94) 60%
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .hero-scrim {
+      background: linear-gradient(
+        90deg,
+        rgba(6, 27, 61, 1) 0%,
+        rgba(6, 27, 61, 1) 36%,
+        rgba(6, 27, 61, 0.55) 56%,
+        rgba(6, 27, 61, 0.12) 80%,
+        rgba(6, 27, 61, 0) 100%
+      );
+    }
+  }
+
+  /* Breaks out of the 1200px column to the full viewport width, for the page
+     banner and the full-width bands. `html` has overflow-x: hidden, so the
+     scrollbar's width cannot turn this into a sideways scroll. */
+  .bleed {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  /* The only permitted transition surface. */
+  .ui-transition {
+    transition:
+      background-color 120ms ease,
+      border-color 120ms ease,
+      opacity 120ms ease;
+  }
+
+  /* 12px all-caps eyebrow. The only place ALL CAPS is allowed. */
+  /* Set as ordinary small text, not as a bold muted capitals label.
+     Uppercase at 700 with wide tracking read as shouting furniture rather
+     than as a heading's qualifier, and muted capitals are among the hardest
+     small text to read. Sentence case at 400 in ink measures 13.9:1 on white
+     and simply reads. */
+  .eyebrow {
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+  }
+
+  /* Tabular figures for tokens, counts, times, dates in tables. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* A bordered white surface. Hover darkens the border; nothing lifts. */
+  .card {
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    background-color: var(--color-white);
+  }
+  a.card:hover,
+  .card-link:hover {
+    border-color: var(--color-ink);
+  }
+
+  .photo-tile {
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--color-white);
+  }
+
+  /* ------------------------------------------------------------------
+     Image frames.
+
+     The reference sets photographs on a 16px corner — its own scale runs
+     4 / 8 / 12 / 16 / 24, and pictures take "large". This build's ceiling
+     was 4px, which is right for a control or a bordered panel and reads
+     as a rectangle on a photograph.
+
+     So 16px applies to PHOTOGRAPHS ONLY, through this class. Buttons,
+     inputs, cards and panels stay at 3px: the point of the low ceiling
+     was to stop the interface looking like a toy, and a rounded picture
+     does not do that where a rounded button does.
+
+     overflow: hidden is part of the class rather than left to callers —
+     an object-cover image inside a rounded box squares its own corners
+     off unless the parent clips it, which is the failure that makes this
+     look half-applied.
+     ------------------------------------------------------------------ */
+  .image-frame {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  /* ------------------------------------------------------------------
+     Cut-corner blocks.
+
+     The signature of the layout: a rounded block with a rounded square
+     taken out of one corner, and a disc (an arrow, or a number) sitting in
+     the gap. Every turn of the outline is a curve: the gap's inner corner
+     is rounded by ::before, and the two places where the gap meets the
+     block's edges are rounded by the two small fillets drawn in ::after.
+     Both are painted in the colour of the band behind the block, which is
+     white unless --notch-bg says otherwise.
+
+     The disc is a sibling laid over the gap, never a child of the block.
+     ------------------------------------------------------------------ */
+  .notch-tr,
+  .notch-br {
+    --notch: 52px;
+    --curve: 14px;
+    --notch-bg: var(--color-white);
+    position: relative;
+  }
+  /* Every piece reaches 1px past the block's right edge and 1px into its
+     neighbour, so sub-pixel rounding never leaves a hairline of the block's
+     own colour showing at a seam. The overhang is painted in the band colour,
+     so it cannot be seen. */
+  .notch-tr::before,
+  .notch-br::before,
+  .notch-tr::after,
+  .notch-br::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    pointer-events: none;
+  }
+  .notch-tr::before,
+  .notch-br::before {
+    width: calc(var(--notch) + 1px);
+    height: var(--notch);
+    background: var(--notch-bg);
+  }
+  .notch-tr::after,
+  .notch-br::after {
+    width: calc(var(--notch) + var(--curve) + 1px);
+    height: calc(var(--notch) + var(--curve));
+  }
+
+  .notch-tr::before {
+    top: -1px;
+    height: calc(var(--notch) + 1px);
+    border-bottom-left-radius: 16px;
+  }
+  .notch-tr::after {
+    top: 0;
+    background:
+      radial-gradient(circle var(--curve) at 0 100%, #0000 96%, var(--notch-bg)) 0 0 /
+        calc(var(--curve) + 1px) var(--curve) no-repeat,
+      radial-gradient(circle var(--curve) at 0 100%, #0000 96%, var(--notch-bg)) 100%
+        100% / calc(var(--curve) + 1px) calc(var(--curve) + 1px) no-repeat;
+  }
+
+  .notch-br::before {
+    bottom: -1px;
+    height: calc(var(--notch) + 1px);
+    border-top-left-radius: 16px;
+  }
+  .notch-br::after {
+    bottom: 0;
+    background:
+      radial-gradient(circle var(--curve) at 0 0, #0000 96%, var(--notch-bg)) 0 100% /
+        calc(var(--curve) + 1px) var(--curve) no-repeat,
+      radial-gradient(circle var(--curve) at 0 0, #0000 96%, var(--notch-bg)) 100% 0 /
+        calc(var(--curve) + 1px) calc(var(--curve) + 1px) no-repeat;
+  }
+
+  /* The home hero: the photograph clears to white behind the headline, so
+     the headline sits in dark text the way the reference sets its quote. */
+  .hero-fade {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 28%,
+      rgba(255, 255, 255, 0.8) 62%,
+      rgba(255, 255, 255, 1) 88%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+
+  /* The quick-action band on department pages: the brand green into the
+     highlight blue, left to right. */
+  .cta-band {
+    background: linear-gradient(
+      90deg,
+      var(--color-accent-deep),
+      var(--color-highlight)
+    );
+  }
+
+  /* Photograph cards: white type over the lower part of a picture. */
+  .photo-fade {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0.55) 62%,
+      rgba(0, 0, 0, 0.86) 100%
+    );
+  }
+
+  /* Rendered announcement markdown. Hand-written rather than the typography
+     plugin, which ships its own colour ramp. */
+  .prose {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+  .prose > * + * {
+    margin-top: 16px;
+  }
+  .prose h2 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    margin-top: 32px;
+  }
+  .prose h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    margin-top: 24px;
+  }
+  .prose h4 {
+    font-size: 16px;
+    margin-top: 24px;
+  }
+  .prose ul,
+  .prose ol {
+    padding-left: 24px;
+  }
+  .prose ul {
+    list-style: disc;
+  }
+  .prose ol {
+    list-style: decimal;
+  }
+  .prose li + li {
+    margin-top: 4px;
+  }
+  /* Links in notices are black and underlined, like all text on the site. */
+  .prose a {
+    color: var(--color-ink);
+    text-decoration: underline;
+  }
+  .prose blockquote {
+    border-left: 2px solid var(--color-navy);
+    padding-left: 16px;
+  }
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+  .prose pre {
+    border: 1px solid var(--color-line);
+    border-radius: 3px;
+    padding: 16px;
+    overflow-x: auto;
+  }
+  /* Announcement bodies are author-written markdown, so a table in one can be
+     any width. It scrolls inside itself rather than widening the page. */
+  .prose table {
+    font-size: 14px;
+    line-height: 1.45;
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  .prose th {
+    border-bottom: 1px solid var(--color-navy);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 700;
+  }
+  .prose td {
+    border-bottom: 1px solid var(--color-line);
+    padding: 8px 12px;
+  }
+  .prose hr {
+    margin-block: 32px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Print. Black on white, no navigation, no backgrounds.
+   Route-specific print rules live alongside their components.
+   ------------------------------------------------------------------ */
+@media print {
+  :root {
+    --gutter: 0;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+    font-size: 11pt;
+    line-height: 1.35;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  [data-print="hide"] {
+    display: none !important;
+  }
+
+  table {
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  thead {
+    display: table-header-group;
+  }
 }

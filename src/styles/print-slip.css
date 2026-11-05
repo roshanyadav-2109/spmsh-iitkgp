@@ -1,0 +1,51 @@
+/* Appointment slip. A5, black on white, no navigation. */
+@media print {
+  @page {
+    size: A5 portrait;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .slip,
+  .slip * {
+    visibility: visible;
+  }
+
+  .slip {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    width: 100%;
+    border: 1px solid #000000;
+    padding: 8mm;
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+
+  .slip [data-print="hide"] {
+    display: none !important;
+  }
+
+  .slip .slip-token {
+    font-size: 30pt;
+    line-height: 1;
+  }
+
+  .slip .slip-rule {
+    border-color: #000000;
+  }
+
+  .slip .slip-qr {
+    width: 30mm;
+    height: 30mm;
+  }
+}

@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+# Blocks a commit that contains a secret, and runs the design check.
+#
+# Enabled with:   git config core.hooksPath .githooks
+# (npm run prepare does this for you.)
+#
+# A plain grep rather than gitleaks, so there is no extra dependency to
+# install on a hospital machine. It catches the three shapes that actually
+# occur in this project: the Supabase personal access token, a service-role
+# key name, and a JWT.
+
+set -e
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$STAGED" ] && exit 0
+
+FOUND=0
+
+for FILE in $STAGED; do
+  # .env.example holds empty keys by design.
+  case "$FILE" in
+    .env.example|.githooks/pre-commit|scripts/check-design.mjs) continue ;;
+  esac
+
+  [ -f "$FILE" ] || continue
+
+  # Supabase personal access token.
+  if git show ":$FILE" | grep -qE 'sbp_[a-f0-9]{40}'; then
+    echo "BLOCKED  $FILE contains a Supabase personal access token (sbp_...)."
+    FOUND=1
+  fi
+
+  # Service-role / secret key assigned a value.
+  if git show ":$FILE" | grep -qE 'SUPABASE_SERVICE_ROLE_KEY[[:space:]]*=[[:space:]]*[^[:space:]]+'; then
+    echo "BLOCKED  $FILE assigns a value to SUPABASE_SERVICE_ROLE_KEY."
+    FOUND=1
+  fi
+  if git show ":$FILE" | grep -qE 'sb_secret_[A-Za-z0-9_-]{10,}'; then
+    echo "BLOCKED  $FILE contains a Supabase secret key (sb_secret_...)."
+    FOUND=1
+  fi
+
+  # A JWT. The anon key is one too, and it does not belong in the repo either.
+  if git show ":$FILE" | grep -qE 'eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}'; then
+    echo "BLOCKED  $FILE contains what looks like a JWT."
+    FOUND=1
+  fi
+done
+
+if [ "$FOUND" -ne 0 ]; then
+  echo ""
+  echo "Nothing was committed. Move the secret to .env.local, which is ignored."
+  echo "If this is a false positive, commit with --no-verify and say why in the"
+  echo "commit message."
+  exit 1
+fi
+
+npm run check:design

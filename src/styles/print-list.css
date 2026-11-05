@@ -1,0 +1,49 @@
+/* Daily appointment list. A4 portrait, black on white, one table per doctor. */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  [data-print="hide"] {
+    display: none !important;
+  }
+
+  .print-list {
+    font-size: 9pt;
+    line-height: 1.3;
+  }
+
+  .print-list h2 {
+    font-size: 12pt;
+    margin-top: 8mm;
+    page-break-after: avoid;
+  }
+
+  .print-list table {
+    width: 100%;
+    page-break-inside: auto;
+  }
+
+  .print-list th,
+  .print-list td {
+    border-bottom: 1px solid #000000;
+    padding: 2mm 1mm;
+    text-align: left;
+  }
+
+  /* The stacked mobile view must never print. */
+  .print-list ul[class*="sm:hidden"] {
+    display: none !important;
+  }
+
+  .print-list table {
+    display: table !important;
+  }
+}
